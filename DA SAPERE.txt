@@ -1,0 +1,23 @@
+cosa sapere di un linguaggio:
+
+costrutti essenziali
+if, else, elseif, switch
+
+cicli e iterazioni: for, while e do while + for each
+
+strutture dati: stringa, float, int, bool, liste
+
+funzioni: definire e usare
+
+eccezioni
+programmi robusti: try catch etc
+
+elaborazioni dei file
+
+elaborazione stringhe
+
+altri tipi di dati, le date
+
+condizioni, operatori logici aritmetici e di precedenza e di confronto
+
+ATTENZIONE molte cose in java non stanno esempio range, in, compreso tra...
