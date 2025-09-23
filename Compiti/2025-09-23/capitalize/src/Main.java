@@ -18,7 +18,7 @@ public class Main {
                 char chrup=Character.toUpperCase(stringa.charAt(i));
                 String temp = " " + chrup;
                 nuova_stringa += temp;
-                up=0;
+                up=-0;
 
             } else {nuova_stringa+=stringa.charAt(i);} // += e segnato come warn ma funziona!!
         }
