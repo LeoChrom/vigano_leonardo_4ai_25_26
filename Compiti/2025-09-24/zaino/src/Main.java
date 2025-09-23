@@ -80,7 +80,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        String[] oggetti= new String[4];
+        String[] oggetti= new String[30];
         System.out.println("--- Metti nello zaino ---");
 
         int continua = 1;
