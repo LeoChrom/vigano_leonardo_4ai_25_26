@@ -20,7 +20,7 @@ public class Main {
                 nuova_stringa += temp;
                 up=0;
 
-            } else {nuova_stringa+=stringa.charAt(i);}
+            } else {nuova_stringa+=stringa.charAt(i);} // += e segnato come warn ma funziona!!
         }
         return nuova_stringa;
     }
@@ -30,8 +30,11 @@ public class Main {
 
         System.out.print("Scrivi una parola: ");
         String stringa = reader.readLine();
-        String nstr=capitalize(stringa);
+        String nstr=capitalize(stringa); //nuova stringa
         System.out.println(nstr);
+        if (nstr.length()==0){
+            System.err.println("Parola vuota...");
+        }
 
     }
 }
