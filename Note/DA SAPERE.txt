@@ -4,6 +4,9 @@ costrutti essenziali
 if, else, elseif, switch
 
 cicli e iterazioni: for, while e do while + for each
+date
+funzioni stringa
+algoritmi ordinamento
 
 strutture dati: stringa, float, int, bool, liste
 

@@ -6,3 +6,4 @@ List<String> list = new ArrayList<>();
 list.get()
 list.size()
 list.set()
+list.add()
