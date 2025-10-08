@@ -1,0 +1,54 @@
+Le convenzioni di denominazione delle variabili in Java sono fondamentali per rendere il codice leggibile, mantenibile e conforme agli standard. Ecco le principali regole e migliori pratiche:
+
+1. Convenzioni Generali
+Case Sensitivity: Java è case-sensitive, quindi myVariable e MyVariable sono due variabili diverse.
+Nomi Significativi: Usa nomi che descrivano chiaramente lo scopo della variabile. Ad esempio, preferisci totalPrice a tp.
+
+2. Convenzioni Specifiche
+
+a. Variabili locali
+Formato: Utilizza il camelCase (la prima parola in minuscolo, le successive con iniziale maiuscola).
+Esempio: userAge, totalAmount.
+Scopo Limitato: Dichiarale il più vicino possibile al loro utilizzo.
+
+b. Variabili di istanza (non statiche)
+Formato: Anche qui si usa il camelCase.
+Esempio: accountBalance, customerName.
+Visibilità: Di norma, sono dichiarate come private e accessibili tramite metodi getter e setter.
+
+c. Variabili statiche (di classe)
+Formato: Usa MAIUSCOLE_CON_SOTTOLINEATURE per le costanti statiche finali.
+Esempio: MAX_USERS, DEFAULT_TIMEOUT.
+
+d. Variabili globali
+In Java, non esistono variabili globali. Per simulare questo comportamento, si usano variabili statiche in una classe.
+
+3. Regole Sintattiche
+Caratteri consentiti: Solo lettere, numeri, $ e _. Non può iniziare con un numero.
+Parole riservate: Non usare parole chiave di Java (es. int, class, static) come nomi di variabili.
+
+4. Esempio Pratico
+public class Example {
+    // Variabile statica (costante)
+    public static final int MAX_USERS = 100;
+
+    // Variabile di istanza
+    private String userName;
+
+    public Example(String userName) {
+        this.userName = userName; // Variabile locale
+    }
+
+    // Getter
+    public String getUserName() {
+        return userName;
+    }
+
+    // Setter
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+}
+
+
+Seguendo queste convenzioni, il codice sarà più leggibile e professionale.
