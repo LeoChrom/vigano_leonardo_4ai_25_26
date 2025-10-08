@@ -10,7 +10,8 @@ public class Televisione {
     public boolean accesa;
 
     // costruttoreee nota come non ce la roba void e il nome corrisp alla classe
-    public Televisione() {
+    public Televisione(String marca) {
+        marca=marca;
         // definisco i valori default
     }
 
