@@ -1,20 +1,19 @@
 import javax.naming.LimitExceededException;
 
+/**
+ * <p>
+ *     Questa classe rappresenta un furgone utilizzato per il trasporto di scatoloni.
+ *     Si possono caricare scatoloni di dimensioni predefinite, si può scaricare completamente il furgone,
+ *     calcolare lo spazio rimanente e la spesa di spedizione
+ * </p>
+ *
+ * <p>
+ *     Include controlli per evitare che venga caricato uno scatolone quando
+ *     non c'è spazio a sufficenza
+ * </p>
+ *
+ */
 public class Furgone {
-    /**
-     * <p>
-     *     Questa classe rappresenta un furgone utilizzato per il trasporto di scatoloni.
-     *     Si possono caricare scatoloni di dimensioni predefinite, si può scaricare completamente il furgone,
-     *     calcolare lo spazio rimanente e la spesa di spedizione
-     * </p>
-     *
-     * <p>
-     *     Include controlli per evitare che venga caricato uno scatolone quando
-     *     non c'è spazio a sufficenza
-     * </p>
-     *
-     */
-
 
     //attributi funzionali e costanti
     public final int capienza; //non si puo modificare una volta assegnato
