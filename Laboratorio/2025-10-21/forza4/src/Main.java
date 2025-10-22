@@ -40,7 +40,7 @@ void main() {
 
 
         if (!errore) {
-            if (forza4.chkVincita()==true){
+            if (forza4.chkVincita()){
                 gioco=false;
                 System.out.println("!! - Partita conclusa");
                 System.out.println("Vince il giocatore " + turno);
