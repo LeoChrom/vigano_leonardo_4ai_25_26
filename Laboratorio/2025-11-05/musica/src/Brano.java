@@ -76,10 +76,9 @@ public class Brano {
 
     @Override
     public String toString() {
-        return "Brano: " + '\n' +
-                "titolo: " + titolo + '\n' +
-                "artista: " + artista + '\n' +
-                "anno: " + anno + '\n' +
-                "copieVendute: " + copieVendute;
+        return  "Titolo: " + titolo + '\n' +
+                "Artista: " + artista + '\n' +
+                "Anno: " + anno + '\n' +
+                "CopieVendute: " + copieVendute;
     }
 }

@@ -45,7 +45,40 @@ void aggiungi(List<Brano> listaBrani){
 }
 
 void visualizza(List<Brano> listaBrani){
+    if (listaBrani.size()>0){
+        for (int i = 0; i < listaBrani.size(); i++) {
+            System.out.print(i+1);
+            System.out.println(". " + listaBrani.get(i));
+            System.out.println();
+        }
+    }
+}
 
+void elimina(List<Brano> listaBrani) {
+    if(listaBrani.size()>0){
+        visualizza(listaBrani);
+        boolean errore = true;
+        while (errore){
+            errore=false;
+            int sel = -1;
+
+            try {
+                sel= Integer.parseInt(IO.readln());
+            }
+            catch (Exception e){
+                errore=true;
+                System.out.println("Selezione non valida");
+                System.out.println();
+            }
+
+            if (errore==false && sel>0 && sel<=listaBrani.size()){
+                listaBrani.remove(sel-1);
+                System.out.println("! - Brano eliminato");
+                System.out.println();
+            }
+
+        }
+    }
 }
 
 void main() {
@@ -62,6 +95,12 @@ void main() {
         switch (sel){
             case "1":
                 aggiungi(brani);
+                break;
+            case "2":
+                visualizza(brani);
+                break;
+            case "3":
+                elimina(brani);
                 break;
             case "0":
                 continua=false;
