@@ -42,6 +42,7 @@ public class Brano {
 
     public void setCopieVendute(int copie){
         if (copie<0) throw new IllegalArgumentException("! - Copie vendute non può esssere negativo");
+        else copieVendute=copie;
 
     }
 

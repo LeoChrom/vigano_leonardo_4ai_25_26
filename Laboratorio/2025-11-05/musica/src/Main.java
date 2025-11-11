@@ -63,6 +63,7 @@ void elimina(List<Brano> listaBrani) {
             int sel = -1;
 
             try {
+                System.out.print("ID brano da eliminare: ");
                 sel= Integer.parseInt(IO.readln());
             }
             catch (Exception e){
@@ -79,6 +80,7 @@ void elimina(List<Brano> listaBrani) {
 
         }
     }
+    else System.out.println("! - lista brani vuota");
 }
 
 void main() {
