@@ -1,11 +1,11 @@
 import java.util.Stack;
 
 public class Rastrelliera {
-    Stack<Disco> torre1 = null;
-    Stack<Disco> torre2 = null;
-    Stack<Disco> torre3 = null;
-    int mosse;
-    int numDischi;
+    private Stack<Disco> torre1 = null;
+    private Stack<Disco> torre2 = null;
+    private Stack<Disco> torre3 = null;
+    private int mosse;
+    private int numDischi;
 
     Rastrelliera(int dischi){
         setNumDischi(dischi);
@@ -81,17 +81,22 @@ public class Rastrelliera {
                     break;
             }
 
-            if (torreOrig.peek().getDimensione()<torreDest.peek().getDimensione() || torreDest.empty()){
+            if (torreDest.empty() || torreOrig.peek().getDimensione()<torreDest.peek().getDimensione() ){
                 Disco disco = torreOrig.pop();
                 torreDest.push(disco);
+                mosse++;
             }
-            else throw new IllegalStateException("! - Mossa non valida");
+            else throw new IllegalArgumentException("! - Mossa non valida");
         }
 
         else throw new IllegalArgumentException("! - valori origine e dest non validi. Devono essere val diversi e compresi tra 1 e 3");
     }
 
-    // TODO public boolean chkVincita(){}
+    public boolean chkVincita(){
+        if (!torre2.empty() && torre2.peek().getDimensione()==1 && torre2.size()==numDischi) return true;
+        else if (!torre3.empty() && torre3.peek().getDimensione()==1 && torre3.size()==numDischi) return true;
+        else return false;
+    }
 
 
 }

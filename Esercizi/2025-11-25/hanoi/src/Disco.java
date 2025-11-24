@@ -1,5 +1,5 @@
 public class Disco {
-    int dimensione;
+    private int dimensione;
 
     Disco(int dimensione){
         if(dimensione>0 && dimensione<=8) this.dimensione=dimensione;
@@ -7,5 +7,10 @@ public class Disco {
     }
     public int getDimensione() {
         return dimensione;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(dimensione);
     }
 }
