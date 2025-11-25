@@ -13,9 +13,6 @@ void datiDiProva(){
     archivio.add(new Scooterino("C12345", 4345, "Vespa P80", LocalDate.of(2009, 1, 29),anagrafica.get(2)));
     archivio.add(new Scooterino("L12345", 5000, "KTM K3", LocalDate.of(2002, 1, 29),anagrafica.get(3)));
     archivio.add(new Scooterino("U12345", 3212, "Malaguti f10", LocalDate.of(2007, 1, 29),anagrafica.get(4)));
-
-
-
 }
 
 void visualizza(List<Scooterino> lista){
@@ -66,12 +63,19 @@ Proprietario selezionaProp(List<Proprietario> anagrafica){
     Proprietario selezione = null;
     if(anagrafica.size()==0) return selezione;
     int i = 0;
-    while (selezione == null || i< anagrafica.size() ) {
-        if (anagrafica.get(i).getCF().equals(t)){
-            selezione = anagrafica.get(i);
+    try {
+        while (selezione == null || i< anagrafica.size() ) {
+            if (anagrafica.get(i).getCF().equals(t)){
+                selezione = anagrafica.get(i);
+            }
+            i++;
         }
-        i++;
     }
+    catch (IndexOutOfBoundsException e){
+        System.out.println("! Proprietario non trovato. controlla il CF");
+        System.out.println();
+    }
+
     return selezione;
 
 }
@@ -95,6 +99,12 @@ void eliminaScooter(List<Scooterino> lista){
 
 }
 
+void eliminaProprietario(List<Scooterino> scooterinos, List<Proprietario> proprietarios){
+    boolean errore=true;
+    Proprietario p = selezionaProp(anagrafica);
+    if (p==null) return;
+}
+
 void inserisci(List<Scooterino> lista, List<Proprietario> anagrafica){
     boolean errore=true;
     Proprietario p = selezionaProp(anagrafica);
@@ -112,12 +122,11 @@ void inserisci(List<Scooterino> lista, List<Proprietario> anagrafica){
             t = IO.readln("Inserisci targa: ");
             km = Integer.parseInt(IO.readln("Inserisci kilometri: "));
             da = LocalDate.parse(IO.readln("Data di acquisto : "));
+            archivio.add(new Scooterino(t,km,m,da,p));
         } catch (Exception e){
             errore=true;
             System.out.println("!- Dati inseriti errati");
         }
-
-        if(errore==false) archivio.add(new Scooterino(t,km,m,da,p));
     }
     System.out.println();
 }
@@ -134,6 +143,8 @@ void inserisciProp(List<Proprietario> anagrafica){
         try {
             Proprietario newp = new Proprietario(cf,nome,cognome);
             anagrafica.add(newp);
+            System.out.println("Proprietario aggiunto correttamente");
+            System.out.println();
         }
         catch (Exception e){
             errore=true;
@@ -148,7 +159,7 @@ void main() {
     System.out.println("---------Gestione scoooterini---------");
     boolean continua = true;
     while (continua){
-        System.out.println("1. Nuovo scooter \n2. Visualizza tutto \n3. Elimina scooter \n4. Dati di prova \n5. Inserisci proprietario \n0. Esci");
+        System.out.println("1. Nuovo scooter \n2. Visualizza tutto \n3. Elimina scooter \n4. Dati di prova \n5. Inserisci proprietario \n6. Visualizza proprietari \n7. Elimina proprietario \n0. Esci");
         System.out.print("Scegli un'opzione: ");
         String sel = IO.readln();
         System.out.println();
@@ -168,6 +179,11 @@ void main() {
             case "5":
                 inserisciProp(anagrafica);
                 break;
+            case "6":
+                visualizzaProp(anagrafica);
+                break;
+            case "7":
+                eliminaProprietario(archivio,anagrafica);
             case "0":
                 continua=false;
                 break;

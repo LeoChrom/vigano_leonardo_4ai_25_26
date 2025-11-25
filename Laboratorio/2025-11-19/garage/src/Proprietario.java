@@ -40,10 +40,8 @@ public class Proprietario {
 
     @Override
     public String toString() {
-        return "Proprietario{" +
-                "CF='" + CF + '\'' +
+        return  "CF='" + CF + '\'' +
                 ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                '}';
+                ", cognome='" + cognome + '\'';
     }
 }
