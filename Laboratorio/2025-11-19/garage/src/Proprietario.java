@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Proprietario {
-    private String CF;
+    private String COD;
     private String nome;
     private String cognome;
 
@@ -11,12 +11,12 @@ public class Proprietario {
         setCognome(cognome);
     }
 
-    public String getCF() {
-        return CF;
+    public String getCOD() {
+        return COD;
     }
 
-    public void setCF(String CF) {
-        if (CF.length()==16) this.CF = CF;
+    public void setCF(String COD) {
+        if (COD.matches("")) this.COD = COD;
         else throw new IllegalArgumentException("! - Codice fiscale non valido");
     }
 
@@ -40,8 +40,8 @@ public class Proprietario {
 
     @Override
     public String toString() {
-        return  "CF='" + CF + '\'' +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'';
+        return  "Codice: " + COD + '\'' +
+                ", nome: " + nome + '\'' +
+                ", cognome: " + cognome + '\'';
     }
 }

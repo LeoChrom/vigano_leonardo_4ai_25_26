@@ -12,7 +12,7 @@ public class Rastrelliera {
         mosse=0;
 
         torre1= new Stack<>();
-        for (int i = 1; i <=numDischi ; i++) {
+        for (int i = numDischi; i >0 ; i--) {
             torre1.push(new Disco(i));
         }
         torre2 = new Stack<>();
@@ -89,7 +89,7 @@ public class Rastrelliera {
             else throw new IllegalArgumentException("! - Mossa non valida");
         }
 
-        else throw new IllegalArgumentException("! - valori origine e dest non validi. Devono essere val diversi e compresi tra 1 e 3");
+        else throw new IllegalArgumentException("! - Valori origine e dest non validi. Devono essere valori diversi e compresi tra 1 e 3");
     }
 
     public boolean chkVincita(){
