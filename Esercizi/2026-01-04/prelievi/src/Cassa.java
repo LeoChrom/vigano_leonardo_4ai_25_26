@@ -5,7 +5,7 @@ public class Cassa {
     private String identificativo;
 
     public Cassa(){
-        identificativo = "Cassa" + Integer.toString(progressivo);
+        identificativo = "CASSA" + Integer.toString(progressivo);
         progressivo++;
     }
 

@@ -1,8 +1,5 @@
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Gestore {
     private Queue<String> codaNormali;
@@ -27,7 +24,7 @@ public class Gestore {
     }
 
     public void emettiBigliettoPrioritario(){
-        codaNormali.add("N"+Integer.toString(progressivoPrioritari));
+        codaPrioritari.add("P"+Integer.toString(progressivoPrioritari));
         progressivoPrioritari+=1;
 
     }
@@ -40,7 +37,7 @@ public class Gestore {
                 CCN = 0;
             }
         }
-        if (!codaNormali.isEmpty()){
+        if (!codaNormali.isEmpty() && Objects.equals(biglietto, "Nessuno in attesa")){
             biglietto= codaNormali.remove();
             CCN+=1;
         }

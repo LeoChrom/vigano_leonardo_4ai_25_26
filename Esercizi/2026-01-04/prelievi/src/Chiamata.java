@@ -12,7 +12,7 @@ public class Chiamata {
 
     }
     private void setCodiceBiglietto(String c){
-        if (c.matches("[NP]{1}[0-9]")) codiceBiglietto = c;
+        if (c.matches("[NP][0-9]")) codiceBiglietto = c;
         else throw new IllegalArgumentException("! - Formato id biglietto errato");
 
     }
@@ -22,7 +22,7 @@ public class Chiamata {
     }
 
     private void setIdentificativoCassa(String i){
-        if (i.matches("CASSA{5}[0-9]{1}")) identificativoCassa =i;
+        if (i.matches("CASSA[0-9]")) identificativoCassa =i;
         else throw new IllegalArgumentException("! - Formato id cassa errato");
 
     }
@@ -32,9 +32,7 @@ public class Chiamata {
     }
 
     private void setOrario(Timestamp o){
-        Timestamp n = new Timestamp(System.currentTimeMillis());
-        if (o.compareTo(n) < 0) throw new IllegalArgumentException("! - Non si accettano orari nel passato");
-        else orario=o;
+        orario=o;
 
     }
 

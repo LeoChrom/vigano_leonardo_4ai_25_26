@@ -43,7 +43,7 @@ void main() {
                 stampaUtentiInCoda(gestore);
                 break;
             case 4:
-                stampaStoricoChiamate(gestore);
+                stampaStoricoChiamate(logChiamate);
                 break;
             case 0:
                 continua=false;
@@ -113,7 +113,7 @@ public String prenotaBigliettoNormale(Gestore g) {
     Queue<String> q = g.getCodaNormali();
     String ultimo = null;
     for (String e : q) {
-        ultimo = e; // alla fine del ciclo è l’ultimo visto
+        ultimo = e;
     }
     return ultimo;
 }
@@ -123,7 +123,7 @@ public String prenotaBigliettoPrioritario(Gestore g){
     Queue<String> q = g.getCodaPrioritari();
     String ultimo = null;
     for (String e : q) {
-        ultimo = e; // alla fine del ciclo è l’ultimo visto
+        ultimo = e;
     }
     return ultimo;
 }
@@ -179,11 +179,11 @@ public void stampaUtentiInCoda(Gestore g){
     }
 }
 
-public void stampaStoricoChiamate(Gestore g){
-    List<String> coda = g.getBigliettiInAttesa();
+public void stampaStoricoChiamate(LogChiamate logChiamate){
+    List<Chiamata> log = logChiamate.getChiamate();
     System.out.println("--- LOG CHIAMATE ---");
-    for (int i = 0; i < coda.size(); i++) {
-        System.out.println("- Biglietto: " + coda.get(i));
+    for (int i = 0; i < log.size(); i++) {
+        System.out.println("- Chiamata: " + log.get(i));
     }
-    if (coda.isEmpty()) System.out.println("Nessuna chiamata effettuata");
+    if (log.isEmpty()) System.out.println("Nessuna chiamata effettuata");
 }
