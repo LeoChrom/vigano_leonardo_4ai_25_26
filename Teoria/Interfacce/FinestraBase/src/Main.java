@@ -1,5 +1,16 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/* analizzati e impara
+Textbox -> change value
+Button -> click
+Checkbox -> on change
+Radiobutton -> change
+Label
+Listbox -> change
+Datebox -> change
+
+Panel
+Scroll panel e layout vari
+ */
+
 void main() {
     Finestra login = new Finestra();
 }
