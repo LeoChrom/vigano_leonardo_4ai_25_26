@@ -15,6 +15,7 @@ void main() {
         errore=false;
         try {
             ncasse = Integer.parseInt(IO.readln("Inserisci numero di casse: "));
+            if (ncasse<=0) throw new IllegalArgumentException();
         }
         catch (Exception e){
             errore=true;
@@ -30,6 +31,7 @@ void main() {
     while (continua){
         stampaMenu();
         scelta = chiediScelta();
+        System.out.println();
         switch (scelta){
             case 1:
                 prenotaBiglietto();
@@ -104,35 +106,44 @@ public void prenotaBiglietto(){
                 errore=true;
         }
     }
-    System.out.println();
 }
 
-
-public String prenotaBigliettoNormale(Gestore g){
+public String prenotaBigliettoNormale(Gestore g) {
     g.emettiBigliettoNormale();
-    return g.getCodaNormali().peek();
+    Queue<String> q = g.getCodaNormali();
+    String ultimo = null;
+    for (String e : q) {
+        ultimo = e; // alla fine del ciclo è l’ultimo visto
+    }
+    return ultimo;
 }
+
 public String prenotaBigliettoPrioritario(Gestore g){
     g.emettiBigliettoPrioritario();
-    return g.getCodaPrioritari().peek();
+    Queue<String> q = g.getCodaPrioritari();
+    String ultimo = null;
+    for (String e : q) {
+        ultimo = e; // alla fine del ciclo è l’ultimo visto
+    }
+    return ultimo;
 }
 
 public void usaCassa(Cassa[] cs, Gestore g){
     boolean errore = true;
     Cassa cassa = null;
-    System.out.println("--- Ci sono " + cs.length + " Casse");
+    System.out.println("--- Ci sono " + cs.length + " Casse --");
     int ncassa = 0;
     while (errore){
         errore = false;
         try {
-            ncassa = Integer.parseInt(IO.readln("Cassa numero: "));
+            ncassa = Integer.parseInt(IO.readln("ID cassa: "));
         }
         catch (Exception e){
             errore=true;
-            System.out.println("! - Inserisci un numero");
+            System.out.println("! - Inserisci un numero a partire da 0");
         }
         if (!errore){
-            if (ncassa <cs.length){
+            if (ncassa <cs.length && ncassa>0){
                 cassa = casse[ncassa];
             }
             else {
@@ -152,17 +163,17 @@ public void usaCassa(Cassa[] cs, Gestore g){
         sel = IO.readln("Opzione: ");
         if (sel.equals("2")) cc=false;
         else if (sel.equals("1")) {
-            cassa.chiamaProssimoCliente(g);
-
+            String chiama = cassa.chiamaProssimoCliente(g);
+            System.out.println();
+            System.out.println("PROSSIMO CLIENTE: " + chiama);
+            System.out.println();
         }
-
     }
-
 }
 
 public void stampaUtentiInCoda(Gestore g){
     List<String> coda = g.getBigliettiInAttesa();
-    System.out.println("--- Ci sono" + coda.size() + " clienti attualmente in coda ---");
+    System.out.println("--- Ci sono " + coda.size() + " clienti attualmente in coda ---");
     for (int i = 0; i < coda.size(); i++) {
         System.out.println("- Biglietto: " + coda.get(i));
     }
@@ -174,4 +185,5 @@ public void stampaStoricoChiamate(Gestore g){
     for (int i = 0; i < coda.size(); i++) {
         System.out.println("- Biglietto: " + coda.get(i));
     }
+    if (coda.isEmpty()) System.out.println("Nessuna chiamata effettuata");
 }
