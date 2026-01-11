@@ -5,6 +5,7 @@ public class Tavolo {
     public static final int MAX_POS = 10;
     private final int nTavolo;
     private List<Pizza> ordini;
+    private float totale;
 
     public Tavolo(int nTavolo) {
         if (nTavolo < 1) {
@@ -16,5 +17,17 @@ public class Tavolo {
 
     public List<Pizza> getOrdini() {
         return ordini;
+    }
+
+    public void aggTotale(float costo) {
+        this.totale=+costo;
+    }
+
+    public float getTotale() {
+        return totale;
+    }
+
+    public void addOrdine(Pizza p){
+        ordini.add(p);
     }
 }

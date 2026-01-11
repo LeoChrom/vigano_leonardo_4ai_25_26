@@ -7,6 +7,10 @@ public class Pizza {
         this.costo=costo;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public float getCosto() {
         return costo;
     }

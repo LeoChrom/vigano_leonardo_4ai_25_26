@@ -5,8 +5,8 @@ public class Cameriere {
         pizzaiolo = new Pizzaiolo();
     }
 
-    public void prendiOrdine(int numeroTavolo, Pizza pizza) {
-
+    public void prendiOrdine(Tavolo t, Pizza pizza) {
+        t.addOrdine(pizza);
     }
 
 }
