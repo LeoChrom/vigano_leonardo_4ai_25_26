@@ -10,7 +10,7 @@ void main() {
 
     System.out.println("--- Gestione Pizzeria ---");
     while (continua){
-        System.out.println("Prendi le ordinazioni dai clienti: \n  1A. Cameriere 1 \n  1B. Cameriere 2 \n2. Prepara le pizze \n3. Calcola il conto \n0. Esci");
+        System.out.println("1. Prendi le ordinazioni dai clienti: \n  1A. Cameriere 1 \n  1B. Cameriere 2 \n2. Prepara le pizze \n3. Calcola il conto \n0. Esci");
         String sel = IO.readln("Opzione: ");
         sel=sel.toUpperCase();
         switch (sel){
@@ -24,6 +24,7 @@ void main() {
                 prepara(pizzaiolo,tavoli);
                 break;
             case "3":
+                vediTotale(tavoli);
                 break;
             case "0":
                 continua=false;
@@ -57,6 +58,7 @@ public void vediTotale(Tavolo[] tavoli){
     }
 
     System.out.println("Totale dovuto: " + tavolo.getTotale() + "€");
+    System.out.println();
 }
 
 public void prepara(Pizzaiolo pizzaiolo, Tavolo[] tavoli){

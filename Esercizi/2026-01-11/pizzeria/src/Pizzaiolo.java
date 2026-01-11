@@ -19,12 +19,9 @@ public class Pizzaiolo {
         if (!t.getOrdini().isEmpty()){
             for (int i = 0; i < t.getOrdini().size(); i++) {
                 Pizza p = t.getOrdini().get(i);
-                System.out.println("Preparata la pizza" + p.getNome());
+                System.out.println("Preparata la pizza " + p.getNome());
                 t.aggTotale(p.getCosto());
-
             }
         }
-
-
     }
 }
