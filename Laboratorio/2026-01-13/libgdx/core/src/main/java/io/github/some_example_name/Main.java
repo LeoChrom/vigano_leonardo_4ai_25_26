@@ -23,7 +23,7 @@ public class Main extends ApplicationAdapter {
         text = file.readString();
         font = new BitmapFont();
     }
-    
+
 
     @Override
     public void render() {
