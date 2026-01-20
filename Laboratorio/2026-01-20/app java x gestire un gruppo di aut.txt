@@ -1,0 +1,5 @@
+app java x gestire un gruppo di automobili con carateristiche definite
+funzionalita:
+crud
+modifica solo qualche param
+filtra per data di produzione
