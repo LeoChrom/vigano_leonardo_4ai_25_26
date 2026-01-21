@@ -18,7 +18,7 @@ public class Automobile {
     }
 
     private void setMarca(String ma) {
-        if (ma.length()<2) throw new IllegalArgumentException("! - Min 2 car per marca");
+        if (ma.length()<2) throw new IllegalArgumentException("Inserire minimo 2 carattere per marca");
         else marca=ma;
 }
 
@@ -27,7 +27,7 @@ public class Automobile {
     }
 
     private void setModello(String mo) {
-        if (mo.length()<1) throw new IllegalArgumentException("! - Min 1 car per modello");
+        if (mo.length()<1) throw new IllegalArgumentException("Inserire minimo 1 carattere per modello");
         else modello=mo;
     }
 
@@ -36,7 +36,7 @@ public class Automobile {
     }
 
     private void setAnno(int a) {
-        if (a<1900 || a> LocalDate.now().getYear()) throw new IllegalArgumentException("! - annno non valido, non può essere futuro o prima del 1900");
+        if (a<1900 || a> LocalDate.now().getYear()) throw new IllegalArgumentException("Anno non valido, non può essere futuro o prima del 1900");
         else anno=a;
     }
 
@@ -45,7 +45,7 @@ public class Automobile {
     }
 
     public void setPrezzo(float p) {
-        if (p<100) throw new IllegalArgumentException("! - prezzo non valido");
+        if (p<100) throw new IllegalArgumentException("Prezzo inserito non valido");
         else prezzo=p;
     }
 

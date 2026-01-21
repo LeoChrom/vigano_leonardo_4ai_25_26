@@ -13,15 +13,9 @@ public class Gestore {
 
     }
 
-/*
-    public void getAuto(){
-        System.out.println("Tutte le automobili in archivio");
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println(lista.get(i));
-        }
+    List<Automobile> getAuto(){
+        return automobili;
     }
-
- */
 
     public void updatePrezzo(int index, float newprz){
         if (index>0 && index<automobili.size()){
