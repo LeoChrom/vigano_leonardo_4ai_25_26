@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 public class Finestra implements ActionListener {
     private Gestore gest;
+    DefaultListModel<String> modelloLista;
 
     private final int LARGHEZZA_FINESTRA= 800;
     private final int ALTEZZA_FINESTRA= 600;
@@ -29,6 +30,7 @@ public class Finestra implements ActionListener {
     private JButton chiudiTabBTN;
     private JTable tabellaAuto;
     private  JScrollPane containerTabella;
+    private JList<String> autoLS;
 
     Finestra(Gestore gestore){
         //attributo necessario
@@ -103,9 +105,6 @@ public class Finestra implements ActionListener {
         chiudiTabBTN.addActionListener(this);
 
         //tabella auto
-
-
-
         String[] colonneTabella = {"Targa", "Marca", "Modello", "Prezzo"};
         String[][] dati = {};
         DefaultTableModel modelloTabella = new DefaultTableModel(dati, colonneTabella);
@@ -113,6 +112,9 @@ public class Finestra implements ActionListener {
         tabellaAuto.setEnabled(false);
         containerTabella = new JScrollPane(tabellaAuto);
 
+        //lista auto
+        modelloLista = new DefaultListModel<>();
+        autoLS = new JList<>(modelloLista);
 
         //aggiunta componenti al pannello
         panelContainer.add(addBTN);
@@ -125,6 +127,7 @@ public class Finestra implements ActionListener {
         panelContainer.add(addConfermaBTN);
         panelContainer.add(containerTabella);
         panelContainer.add(chiudiTabBTN);
+        panelContainer.add(autoLS);
         frame.add(panelContainer);
 
         //controls per aggiunta auto
@@ -138,6 +141,7 @@ public class Finestra implements ActionListener {
         containerTabella.setVisible(false);
         chiudiTabBTN.setVisible(false);
 
+        autoLS.setVisible(false);
 
         //opzioni frame
         frame.setSize(LARGHEZZA_FINESTRA,ALTEZZA_FINESTRA);
@@ -186,10 +190,14 @@ public class Finestra implements ActionListener {
             }
 
         } else if (e.getSource() == delBTN) {
-            marcaTXF.setText("");
-            modelloTXF.setText("");
+            for (Automobile a : gest.getAuto()) {
+                modelloLista.addElement(a.toString());
+            }
+
+            autoLS.setVisible(true);
         } else if (e.getSource() == mostraBTN) {
             DefaultTableModel model = (DefaultTableModel) tabellaAuto.getModel();
+            model.setNumRows(0);
 
             Object[][] datiTabella = new Object[gest.getAuto().size()][4];
 

@@ -1,0 +1,18 @@
+DefaultListModel<String> modelloLista = new DefaultListModel<>();
+
+for (Automobile a : listaAuto) {
+    modelloLista.addElement(a.toString());
+}
+
+JList<String> listaGrafica = new JList<>(modelloLista);
+
+
+|||||||
+
+
+int index = listaGrafica.getSelectedIndex();
+
+if (index == -1) {
+    JOptionPane.showMessageDialog(null, "Seleziona un’auto!");
+    return;
+}
