@@ -81,23 +81,38 @@ public class Pedina {
 
         //TODO controlla gli altri movimenti:
 
-        if (riga !=0 && colonna!=0){
-            //se non sono al primo moviemento:
-            if (tipo==Tipo.DAMONE){
-                //controlli a croce
+
+        //non sono al primo movimento..
+        if (riga != 0 && colonna != 0){
+
+            int dr = nr - riga; //delta diff riga
+            int dc = nc - colonna; //delta diff colonna
+
+            if (tipo == Tipo.DAMONE){
+                // DAMONE: diagonale
+                if (Math.abs(dr) != Math.abs(dc)){
+                    throw new DamaException("Il damone si muove solo in diagonale");
+                }
             }
             else {
-                if (colore==Colore.BIANCO){
-                    //controlli per il bianco
-                    //nr!=(riga+1);
+                // DAMA
+                if (Math.abs(dc) != 1){
+                    throw new DamaException("Movimento non valido");
+                }
+
+                if (colore == Colore.BIANCO){
+                    if (dr != 1){
+                        throw new DamaException("La dama bianca può muovere solo in avanti");
+                    }
                 }
                 else {
-
+                    if (dr != -1){
+                        throw new DamaException("La dama nera può muovere solo in avanti");
+                    }
                 }
-
             }
-
         }
+
         riga=nr;
         colonna=nc;
     }
