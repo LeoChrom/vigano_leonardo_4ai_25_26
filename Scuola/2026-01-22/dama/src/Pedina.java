@@ -79,9 +79,6 @@ public class Pedina {
             throw new DamaException("Posizione non valida");
         }
 
-        //TODO controlla gli altri movimenti:
-
-
         //non sono al primo movimento..
         if (riga != 0 && colonna != 0){
 

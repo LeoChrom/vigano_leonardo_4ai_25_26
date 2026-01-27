@@ -269,6 +269,5 @@ public class Finestra implements ActionListener {
             mostraBTN.setVisible(true);
             chiudiListBTN.setVisible(false);
         }
-
     }
 }
