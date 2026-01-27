@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.Arrays;
+import java.util.List;
 
 //alleggerisco creo un unico listner
 //devo usare else if perche senno si crea un delay nel bottone
@@ -28,6 +29,7 @@ public class Finestra implements ActionListener {
     private JButton mostraBTN;
     private  JButton addConfermaBTN;
     private JButton chiudiTabBTN;
+    private JButton chiudiListBTN;
     private JTable tabellaAuto;
     private  JScrollPane containerTabella;
     private JList<String> autoLS;
@@ -103,6 +105,8 @@ public class Finestra implements ActionListener {
         mostraBTN.addActionListener(this);
         chiudiTabBTN = new JButton("Chiudi tabella");
         chiudiTabBTN.addActionListener(this);
+        chiudiListBTN = new JButton("Annulla");
+        chiudiListBTN.addActionListener(this);
 
         //tabella auto
         String[] colonneTabella = {"Targa", "Marca", "Modello", "Prezzo"};
@@ -128,6 +132,7 @@ public class Finestra implements ActionListener {
         panelContainer.add(containerTabella);
         panelContainer.add(chiudiTabBTN);
         panelContainer.add(autoLS);
+        panelContainer.add(chiudiListBTN);
         frame.add(panelContainer);
 
         //controls per aggiunta auto
@@ -142,6 +147,7 @@ public class Finestra implements ActionListener {
         chiudiTabBTN.setVisible(false);
 
         autoLS.setVisible(false);
+        chiudiListBTN.setVisible(false);
 
         //opzioni frame
         frame.setSize(LARGHEZZA_FINESTRA,ALTEZZA_FINESTRA);
@@ -190,12 +196,43 @@ public class Finestra implements ActionListener {
             }
 
         } else if (e.getSource() == delBTN) {
-            for (Automobile a : gest.getAuto()) {
+            if (gest.getAuto().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Archivio automobili vuoto");
+                return;
+            }
+            modelloLista.clear();
+            addBTN.setVisible(false);
+            delBTN.setVisible(false);
+            mostraBTN.setVisible(false);
+            chiudiListBTN.setVisible(true);
+            List<Automobile> auto =gest.getAuto();
+            for (Automobile a : auto) {
                 modelloLista.addElement(a.toString());
             }
-
+            autoLS.setModel(modelloLista);
+            //evento click
+            autoLS.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent e) {
+                    int index = autoLS.getSelectedIndex();   // indice selezionato
+                    if (index > -1) {
+                        autoLS.setVisible(false);
+                        gest.eliminaAuto(index);
+                        addBTN.setVisible(true);
+                        delBTN.setVisible(true);
+                        mostraBTN.setVisible(true);
+                        chiudiListBTN.setVisible(false);
+                    }
+                }
+            });
             autoLS.setVisible(true);
+
+
         } else if (e.getSource() == mostraBTN) {
+            if (gest.getAuto().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Archivio automobili vuoto");
+                return;
+            }
             DefaultTableModel model = (DefaultTableModel) tabellaAuto.getModel();
             model.setNumRows(0);
 
@@ -225,6 +262,12 @@ public class Finestra implements ActionListener {
             addBTN.setEnabled(true);
             delBTN.setEnabled(true);
             mostraBTN.setEnabled(true);
+        } else if (e.getSource()==chiudiListBTN) {
+            autoLS.setVisible(false);
+            addBTN.setVisible(true);
+            delBTN.setVisible(true);
+            mostraBTN.setVisible(true);
+            chiudiListBTN.setVisible(false);
         }
 
     }
