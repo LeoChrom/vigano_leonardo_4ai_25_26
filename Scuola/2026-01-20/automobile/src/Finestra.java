@@ -20,16 +20,10 @@ public class Finestra implements ActionListener {
 
     private JFrame frame;
     private JPanel panelContainer;
-    private JTextField marcaTXF;
-    private JTextField modelloTXF;
-    private JTextField annoTXF;
-    private JTextField prezzoTXF;
-    private JButton addBTN;
-    private JButton delBTN;
-    private JButton mostraBTN;
-    private  JButton addConfermaBTN;
-    private JButton chiudiTabBTN;
-    private JButton chiudiListBTN;
+    private JTextField marcaTXF,modelloTXF,annoTXF,prezzoTXF;
+    private JButton addBTN,delBTN,mostraBTN,addConfermaBTN,chiudiTabBTN,chiudiListBTN;
+
+
     private JTable tabellaAuto;
     private  JScrollPane containerTabella;
     private JList<String> autoLS;
