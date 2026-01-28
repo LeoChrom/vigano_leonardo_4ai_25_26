@@ -119,6 +119,21 @@ public class Finestra implements ActionListener {
         //lista auto
         modelloLista = new DefaultListModel<>();
         autoLS = new JList<>(modelloLista);
+        autoLS.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        autoLS.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                int index = autoLS.getSelectedIndex();   // indice selezionato
+                if (index > -1) {
+                    autoLS.setVisible(false);
+                    gest.eliminaAuto(index);
+                    addBTN.setVisible(true);
+                    delBTN.setVisible(true);
+                    mostraBTN.setVisible(true);
+                    chiudiListBTN.setVisible(false);
+                }
+            }
+        });
 
         //aggiunta componenti al pannello
         panelContainer.add(addBTN);
@@ -211,20 +226,6 @@ public class Finestra implements ActionListener {
             }
             autoLS.setModel(modelloLista);
             //evento click
-            autoLS.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent e) {
-                    int index = autoLS.getSelectedIndex();   // indice selezionato
-                    if (index > -1) {
-                        autoLS.setVisible(false);
-                        gest.eliminaAuto(index);
-                        addBTN.setVisible(true);
-                        delBTN.setVisible(true);
-                        mostraBTN.setVisible(true);
-                        chiudiListBTN.setVisible(false);
-                    }
-                }
-            });
             autoLS.setVisible(true);
 
 
