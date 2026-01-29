@@ -7,7 +7,7 @@ public class Scacchiera {
         //creiamo le pedine bianche, rr da 1 a 3
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < N_CASELLE; c++){
-                if ((r+1)(r+1)))
+                //if ((r+1)(r+1)))
 
             }
         }
