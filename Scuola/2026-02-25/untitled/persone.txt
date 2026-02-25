@@ -1,3 +1,4 @@
-Alessio;Amato;42
-Carlo;Bacuzzi;18
-Cicco;Pasticcio;55
+Persona;Alessio;Amato;42
+Persona;Carlo;Bacuzzi;18
+Persona;Cicco;Pasticcio;55
+Bambino;Luca;Orsini;8;2017-03-12

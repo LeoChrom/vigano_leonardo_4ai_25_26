@@ -1,11 +1,13 @@
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class GestorePersoneFile {
+public class GestorePersoneFile implements Serializable {
 
     public final static String NOME_FILE = "persone.txt";
-    public final static String SEPARATORE = ";";
+    public final static String SEPARATORE =";";
 
     public static void salvaPersone(List<Persona> personeDaSalvare) throws IOException {
 
@@ -16,7 +18,14 @@ public class GestorePersoneFile {
         //scorro le persone da salvare
         for (Persona p : personeDaSalvare) {
             //creo una stringa da salvare su file per ogni persona
-            personaTesto = p.getNome() + SEPARATORE + p.getCognome() + SEPARATORE + p.getEta();
+            //controllo se ho un bambino oppure una persona
+            if (p instanceof Bambino) {
+                Bambino b = (Bambino) p;
+                personaTesto = "Bambino" + SEPARATORE + b.getNome() + SEPARATORE + b.getCognome() + SEPARATORE + b.getEta() + SEPARATORE + b.getNascita();
+
+            }else if (p instanceof Persona){
+                personaTesto = "Persona" + SEPARATORE + p.getNome() + SEPARATORE + p.getCognome() + SEPARATORE + p.getEta();
+            }
 
             //scrivo su file
             bufferWriter.write(personaTesto);
@@ -24,9 +33,7 @@ public class GestorePersoneFile {
             //metto un a capo su file
             bufferWriter.newLine();
         }
-
         bufferWriter.close();
-
     }
 
     public static List<Persona> caricaPersone() throws IOException {
@@ -41,16 +48,24 @@ public class GestorePersoneFile {
             //splitta la stringa
             String[] dati = stringaCompleta.split(SEPARATORE);
             //salvo il nome, cognome, eta
-            String nome = dati[0];
-            String cognome = dati[1];
-            int eta = Integer.parseInt(dati[2]);
-            //carico tutto sulla lista che devo ritornare
-            personeDaCaricare.add(new Persona(nome, cognome, eta));
+            String nome = dati[1];
+            String cognome = dati[2];
+            System.out.println("AAA " + Arrays.toString(dati));
+            int eta = Integer.parseInt(dati[3]);
+            if (dati[0].equals("Persona")){
+                //carico tutto sulla lista che devo ritornare
+                personeDaCaricare.add(new Persona(nome, cognome, eta));
+            } else if (dati[0].equals("Bambino")) {
+                LocalDate nascita = LocalDate.parse(dati[4]);
+                personeDaCaricare.add(new Bambino(nome, cognome, eta, nascita));
+            }
         }
         //chiudo il BufferReader e faccio la return
         br.close();
         return personeDaCaricare;
     }
+
+
 
 /*
     public static List<Persona> caricaPersone() throws IOException{

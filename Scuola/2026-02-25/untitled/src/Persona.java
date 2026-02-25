@@ -1,8 +1,8 @@
-public class Persona {
+public class Persona implements java.io.Serializable {
 
-    private String nome;
-    private String cognome;
-    private int eta;
+    protected String nome;
+    protected String cognome;
+    protected int eta;
 
     public Persona(String nome, String cognome, int eta) {
         this.nome = nome;

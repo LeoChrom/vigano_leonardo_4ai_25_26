@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+
+
 void main() {
 
 
@@ -6,6 +9,9 @@ void main() {
     persone.add(new Persona("Alessio", "Amato", 42));
     persone.add(new Persona("Carlo", "Bacuzzi", 18));
     persone.add(new Persona("Cicco", "Pasticcio", 55));
+    LocalDate date = LocalDate.of(2017, 3,12);
+    persone.add(new Bambino("Luca","Orsini",8,date));
+
 
     //salvare la lista delle persone su file
     try {
