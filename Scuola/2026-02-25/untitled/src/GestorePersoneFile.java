@@ -21,10 +21,10 @@ public class GestorePersoneFile implements Serializable {
             //controllo se ho un bambino oppure una persona
             if (p instanceof Bambino) {
                 Bambino b = (Bambino) p;
-                personaTesto = "Bambino" + SEPARATORE + b.getNome() + SEPARATORE + b.getCognome() + SEPARATORE + b.getEta() + SEPARATORE + b.getNascita();
+                personaTesto = p.getClass().getName() + SEPARATORE + b.getNome() + SEPARATORE + b.getCognome() + SEPARATORE + b.getEta() + SEPARATORE + b.getNascita();
 
             }else if (p instanceof Persona){
-                personaTesto = "Persona" + SEPARATORE + p.getNome() + SEPARATORE + p.getCognome() + SEPARATORE + p.getEta();
+                personaTesto = p.getClass().getName() + SEPARATORE + p.getNome() + SEPARATORE + p.getCognome() + SEPARATORE + p.getEta();
             }
 
             //scrivo su file
