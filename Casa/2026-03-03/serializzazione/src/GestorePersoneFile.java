@@ -13,7 +13,6 @@ public class GestorePersoneFile implements Serializable {
 
         //creo il buffer writer
         ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(NOME_FILE));
-        String personaTesto = "";
 
         //scorro le persone da salvare
         for (Persona p : personeDaSalvare) {
