@@ -1,7 +1,7 @@
 public class ProvettaSpecial extends Provetta {
 
-    public ProvettaSpecial() {
-        super();
+    public ProvettaSpecial(int capacita) {
+        super(capacita);
     }
 
     /**
