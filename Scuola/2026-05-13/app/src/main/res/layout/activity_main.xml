@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txvTitolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calcola il codice fiscale"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Cognome -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldCognome"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="367dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:hint="Cognome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txvTitolo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCognome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName|textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Nome -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldNome"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="367dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:hint="Nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textFieldCognome">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName|textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Data di Nascita -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldDataNascita"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="367dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="16dp"
+        android:hint="Data di Nascita (gg/mm/aaaa)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textFieldNome">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDataNascita"
+            android:layout_width="358dp"
+            android:layout_height="57dp"
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="date" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Sesso -->
+
+    <TextView
+        android:id="@+id/textViewSessoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Sesso"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textFieldDataNascita" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupSesso"
+        android:layout_width="369dp"
+        android:layout_height="47dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewSessoLabel">
+
+        <RadioButton
+            android:id="@+id/radioButtonMaschio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Maschio" />
+
+        <RadioButton
+            android:id="@+id/radioButtonFemmina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Femmina" />
+    </RadioGroup>
+
+    <!-- Comune di Nascita -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldComune"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="367dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:hint="Comune o Stato Estero di Nascita"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroupSesso">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteComune"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Risultato -->
+
+    <!-- Pulsante Calcola -->
+    <Button
+        android:id="@+id/buttonCalcola"
+        android:layout_width="284dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="44dp"
+        android:text="Prosegui ->"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldComune" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
